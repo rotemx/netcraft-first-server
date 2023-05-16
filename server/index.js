@@ -28,9 +28,9 @@ console.log('running in ' + __dirname);
 const path          = require('path')
 app.use('/', express.static(path.join(__dirname, 'public')))
 
-app.post('/products', (req, res) => {
-	console.log('received request');
-	res.json(products)
+app.get('/products', (req, res) => {
+	console.log('received products request');
+	res.json(JSON.stringify(products));
 })
 
 app.listen(port, () => {
