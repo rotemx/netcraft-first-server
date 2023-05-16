@@ -2,8 +2,6 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const path          = require('path')
-const {application} = require("express");
 
 const products = [
 	{
@@ -27,6 +25,7 @@ const products = [
 console.log("First Server Initializing...");
 console.log('running in ' + __dirname);
 
+const path          = require('path')
 app.use('/', express.static(path.join(__dirname, 'public')))
 
 app.post('/products', (req, res) => {
