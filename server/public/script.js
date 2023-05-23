@@ -9,7 +9,6 @@ function uniq(arr) {
 
 (async ()=>{
 /*
-	const response = await fetch('/products');
 	
 	const products = await response.json() //relative path == http://localhost:3000/products
  
@@ -36,13 +35,17 @@ async function searchArtist(){
 	
 	console.log('searching for ' + term);
 	
-	const itunesURL = `https://itunes.apple.com/search?media=music&term=`
+	// const itunesURLBase = `https://itunes.apple.com/search?media=music&term=`
+	// let itunesFullURL = itunesURLBase + term;
+	// const fetchResponse = await fetch(itunesFullURL);
 	
-	const fetchResponse = await fetch(itunesURL + term);
+	const localServerResponse = await fetch('/itunes?term=' + term);
+	// console.log(response);
 	
-	let data  = await fetchResponse.json();
 	
-	let songs = uniq(data.results
+	const data  = await localServerResponse.json();
+	
+	const songs = uniq(data.results
 	                .map(x=>x.trackName)
 	                .filter(Boolean));
 	
